@@ -1,0 +1,22 @@
+#include<iostream>
+#include<string>
+#include<stack>
+using namespace std;
+
+
+int main(){
+	string s;
+	stack <string> v;
+
+	while (cin >> s){ 
+		v.push(s); 
+	}
+	cout << v.top();
+	v.pop();
+	while (!v.empty()){
+		cout <<" " << v.top() ;
+		v.pop();
+	}
+	system("pause");
+	return 0;
+}
