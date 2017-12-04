@@ -1,0 +1,75 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+struct map{
+	int di;
+	string huo;
+};
+
+void ex(string a){
+	int len = a.length();
+	map data[25];
+
+	string s[25]= {"tret","jan","feb","mar","apr","may","jun","jly","aug","sep","oct","nov","dec","tam","hel","maa","huh","tou","kes","hei","elo","syy","lok","mer","jou"};
+	for(int i=0;i<25;i++){
+		if(i<13)
+			data[i].di = i;
+		else
+			data[i].di = (i-13+1)*13;
+
+		data[i].huo = s[i];
+
+	}
+
+	int r=0,q=0;
+	if(a[0]>='0'&&a[0]<='9'){
+		if(stoi(a)/13==0)
+			cout<<data[stoi(a)].huo<<endl;
+		else{
+			r = stoi(a)%13;
+			q = stoi(a)/13;
+			if(r==0)
+				cout<<data[13+q-1].huo<<endl;
+			else
+				cout<<data[13+q-1].huo<<" "<<data[r].huo<<endl;
+		}
+	}
+	else{
+		if(len<4){
+			for(int i=0;i<25;i++){
+				if(a[0] == s[i][0]&&a[1] == s[i][1]&&a[2] == s[i][2]){
+					cout<<data[i].di<<endl;
+				}
+			}
+		}
+		else{
+			int number = 0;
+			for(int i=13;i<25;i++){
+				if(a[0] == s[i][0]&&a[1] == s[i][1]&&a[2] == s[i][2]){
+					number = (i-13+1)*13;
+				}
+			}
+			for(int i=0;i<13;i++){
+				if(a[4] == s[i][0]&&a[5] == s[i][1]&&a[6] == s[i][2]){
+					number = number + i;
+				}
+			}
+			cout << number<<endl;
+
+		}
+	}
+	return ;
+}
+int main(){
+	int n;
+	cin >>n;
+	getchar();
+	for(int i=0;i<n;i++){
+		string s;
+		getline(cin,s);
+		ex(s);
+	}
+	system("pause");
+	return 0;
+}
